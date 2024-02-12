@@ -1,0 +1,46 @@
+definitions:
+  models.TransRequest:
+    properties:
+      id:
+        type: string
+      source:
+        type: string
+    type: object
+  models.TransResponse:
+    properties:
+      id:
+        type: string
+      source:
+        type: string
+      target:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: COZE-DISCORD-PROXY 代理服务
+  title: COZE-DISCORD-PROXY
+  version: 1.0.0
+paths:
+  /api/v1/trans/create:
+    post:
+      consumes:
+      - application/json
+      description: 创建转换
+      parameters:
+      - description: transModel
+        in: body
+        name: transModel
+        required: true
+        schema:
+          $ref: '#/definitions/models.TransRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response
+          schema:
+            $ref: '#/definitions/models.TransResponse'
+      summary: 创建转换
+      tags:
+      - trans
+swagger: "2.0"
